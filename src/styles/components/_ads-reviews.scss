@@ -1,0 +1,47 @@
+.ads-reviews {
+  background-color: $color-dark_blue;
+
+  &__container {
+    padding-top: 100px;
+    padding-bottom: 130px;
+    color: $color-white;
+    background-image: url("../images/presenters-bg.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center bottom;
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 80px;
+    padding-left: 20px;
+    border-left: 5px solid $color-accent;
+  }
+
+  &-swiper {
+    padding-bottom: 220px;
+
+    &__item {
+      height: 500px;
+      background-color: $color-beige;
+    }
+  }
+
+  .swiper {
+    &-wrapper {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    &-button-next,
+    &-button-prev {
+      color: $color-white;
+
+      svg {
+        path {
+          fill: $color-accent;
+        }
+      }
+    }
+  }
+}

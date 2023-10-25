@@ -1,0 +1,22 @@
+.swiper {
+  &-button-next,
+  &-button-prev {
+    top: 90%;
+    height: 24px;
+    width: 234px;
+
+    &::after {
+      content: "";
+    }
+  }
+
+  &-button-next {
+    width: 365px;
+    font-size: 16px;
+    line-height: 21px;
+
+    span {
+      margin-right: 10px;
+    }
+  }
+}

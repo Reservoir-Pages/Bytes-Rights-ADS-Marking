@@ -1,0 +1,42 @@
+.ads-learn {
+  &--beige {
+    background-color: $color-beige;
+  }
+
+  &__container {
+    padding-top: 109px;
+    padding-bottom: 110px;
+    padding-left: 44px;
+  }
+
+  &__logo {
+    position: absolute;
+    top: 100px;
+    right: 50px;
+  }
+
+  &__title {
+    margin-bottom: 67px;
+  }
+
+  &__descr {
+    margin: 0;
+    margin-bottom: 31px;
+  }
+
+  &__list {
+    margin: 0;
+    padding-left: 35px;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+
+    &::marker {
+      color: $color-accent;
+      font-weight: 700;
+    }
+  }
+}

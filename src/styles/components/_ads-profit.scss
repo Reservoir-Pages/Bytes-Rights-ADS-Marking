@@ -1,0 +1,35 @@
+.ads-profit {
+  &--dark {
+    background-color: $color-dark_blue;
+    color: $color-white;
+  }
+
+  &--light {
+    background-color: $color-beige;
+    color: $color-dark_grey;
+  }
+
+  &__container {
+    padding-top: 100px;
+    padding-bottom: 120px;
+    padding-left: 40px;
+  }
+
+  &__text {
+    margin: 0;
+    padding-right: 50px;
+    padding-left: 37px;
+    margin-bottom: 70px;
+    border-left: 5px solid $color-accent;
+    font-family: $font-family-added;
+    // font-size: 40px;
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 59px;
+    // letter-spacing: 3px;
+  }
+
+  &__btn {
+    margin: 0 auto;
+  }
+}

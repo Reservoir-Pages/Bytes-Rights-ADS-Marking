@@ -1,0 +1,40 @@
+.footer {
+  padding: 65px 0 60px;
+  font-size: 20px;
+  color: $color-white;
+  background-color: $color-dark_blue;
+  padding-bottom: 500px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  &__link {
+    text-decoration: underline;
+  }
+
+  &__company {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+  }
+
+  &__docs {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+
+    a {
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+}

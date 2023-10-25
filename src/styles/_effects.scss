@@ -1,0 +1,25 @@
+.effects {
+  border: 3px solid transparent;
+}
+
+@media (min-width: 768px) {
+  .effects {
+    transition: opacity 0.3s ease-in-out;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &:active {
+      opacity: 0.3;
+    }
+
+    &:focus-visible {
+      border: 3px dashed $color-accent;
+
+      &.btn {
+        border-color: $color-dark_blue;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.nav {
+  &-list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-item {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  &-link {
+    font-weight: 300;
+
+    &--active {
+      font-weight: 700;
+      color: $color-accent;
+    }
+  }
+}

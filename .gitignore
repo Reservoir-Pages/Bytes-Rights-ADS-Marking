@@ -1,0 +1,12 @@
+.git
+.idea
+.vscode
+node_modules
+build
+dist
+ftp-data.json
+version.json
+package-lock.json
+*.zip
+mail-data.php
+other

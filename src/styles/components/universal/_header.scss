@@ -1,0 +1,28 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  padding: 20px 0;
+  background-color: $color-dark_blue;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__link {
+    margin-right: 10px;
+    font-size: 0;
+  }
+
+  &__nav {
+    width: 70%;
+    min-width: 610px;
+    margin-right: 10px;
+    font-size: 30px;
+    color: $color-white;
+  }
+}
