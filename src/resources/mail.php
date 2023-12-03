@@ -1,58 +1,35 @@
 <?php
-require 'phpmailer/PHPMailer.php';
-require 'phpmailer/SMTP.php';
-require 'phpmailer/Exception.php';
-require 'mail-data.php'; // файл с данными по отправке писем
-
-$file = $_FILES['file'];
-$c = true;
-// Формирование самого письма
-foreach ( $_POST as $key => $value ) {
-  if ( $value != "" && $key != "project_name" && $key != "admin_email" && $key != "form_subject" ) {
-    $body .= "
-    " . ( ($c = !$c) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
-      <td style='padding: 10px; border: #e9e9e9 1px solid;'><b>$key</b></td>
-      <td style='padding: 10px; border: #e9e9e9 1px solid;'>$value</td>
-    </tr>
-    ";
-  }
-}
+// Подключаем библиотеку PHPMailer
+require 'phpmailer/PHPMailer.php';                                          //
+require 'phpmailer/SMTP.php';                                               //
+require 'phpmailer/Exception.php';                                          //
+require 'mail-data.php';                                                    // файл с данными по отправке писем
+// Формирование тела письма
+$body = '';
+createBody($body);
 $body = "<table style='width: 100%;'>$body</table>";
-// Настройки PHPMailer
+// Подключение PHPMailer
 $mail = new PHPMailer\PHPMailer\PHPMailer();
-try {
-  $mail->isSMTP();
-  $mail->CharSet = "UTF-8";
-  $mail->SMTPAuth   = true;
-  // Настройки вашей почты
-  $mail->Host       = $mailHost; // SMTP сервера вашей почты
-  $mail->Username   = $mailUsername; // Логин на почте
-  $mail->Password   = $mailPassword; // Пароль на почте
-  $mail->SMTPSecure = $mailSMTPSecure;
-  $mail->Port       = $mailPort;
-  $mail->setFrom($mailSetForm['email'], $mailSetForm['title']); // Адрес самой почты и имя отправителя
-  // Получатель письма
-  $mail->addAddress($mailAddAdress);
-  // $mail->addAddress(''); // если нужен
-  // Прикрипление файлов к письму
-  if (!empty($file['name'][0])) {
-    for ($ct = 0; $ct < count($file['tmp_name']); $ct++) {
-      $uploadfile = tempnam(sys_get_temp_dir(), sha1($file['name'][$ct]));
-      $filename = $file['name'][$ct];
-      if (move_uploaded_file($file['tmp_name'][$ct], $uploadfile)) {
-          $mail->addAttachment($uploadfile, $filename);
-          $rfile[] = "Файл $filename прикреплён";
-      } else {
-          $rfile[] = "Не удалось прикрепить файл $filename";
-      }
-    }
-  }
-  // Отправка сообщения
-  $mail->isHTML(true); // Ввиде HTML
-  $mail->Subject = $mailTitle; // Заголовок письма
-  $mail->Body = $body; // Тело письма
-  $mail->send();
-
-} catch (Exception $e) {
-  $status = "Сообщение не было отправлено. Причина ошибки: {$mail->ErrorInfo}";
+// Установка параметров отправки
+$mail->isSMTP();                                                            // Отправка через SMTP
+// $mail->SMTPDebug  = 4;                                                      // Устанавливаем максимальный уровень отладки
+$mail->SMTPAuth   = true;                                                   // SMTP аутентификация
+$mail->Host       = $mailHost;                                              // Адрес SMTP сервера
+$mail->Port       = $mailPort;                                              // порт подключения
+$mail->SMTPSecure = $SMTPSecure;                                            // шифрование ssl
+$mail->Username   = $mailUsername;                                          // Логин
+$mail->Password   = $mailPassword;                                          // Пароль
+// Настройки письма
+$mail->isHTML(true);                                                        // Ввиде HTML
+$mail->Body       = $body;                                                  // Тело письма
+$mail->CharSet    = $charset;                                               // Кодировка
+$mail->Subject    = $mailTitle;                                             // Тема письма
+$mail->setFrom($mailSetForm['fromEmail'], $mailSetForm['sender']);          // От куда
+$mail->addAddress($addAddress['toEmail'], $addAddress['recepient']);        // Куда
+$mail->addAddress($addAddressDev['toEmail'], $addAddressDev['recepient']);  // Куда
+// Отправляем
+if ($mail->send()) {
+  echo 'Письмо отправлено!';
+} else {
+  echo 'Ошибка: ' . $mail->ErrorInfo;
 }

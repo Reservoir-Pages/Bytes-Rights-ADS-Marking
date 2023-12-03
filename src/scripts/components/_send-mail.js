@@ -8,7 +8,7 @@ function sendMail() {
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      postDb(formData);
+      // postDb(formData);
       sendMessage.classList.remove("is-hidden");
       setTimeout(() => sendMessage.classList.add("is-hidden"), 2000);
     }
@@ -18,11 +18,11 @@ function sendMail() {
   form.reset();
 }
 
-function postDb(formData) {
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", "../db.php", true);
-  xhr.send(formData);
-}
+// function postDb(formData) {
+//   const xhr = new XMLHttpRequest();
+//   xhr.open("POST", "../db.php", true);
+//   xhr.send(formData);
+// }
 
 if (form) {
   form.addEventListener("submit", (e) => {
