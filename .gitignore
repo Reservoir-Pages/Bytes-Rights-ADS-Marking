@@ -6,4 +6,3 @@ build
 dist
 ftp-data.json
 mail-data.php
-*.zip
